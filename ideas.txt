@@ -1,0 +1,21 @@
+devlop:
+
+Way to find which position correspond to which image 
+Discard small point clud
+Entries
+Way to etermine the threshold
+Other method than contours
+improve the code : implement a method to fill the contour, so that there is no inner contour. This create some that are quit big 
+and one has to increase to the erase rate to get rid of them, which does not gives the chance to other contour from other instances
+to be detected !!! then detect the contours again wiht the corrected filled shapes.
+Maybe this problem dispappear in real life as they is a difference of intensity.
+
+Play with the intensity of RGB as well for the diff image.
+
+Use denoising for difff images
+
+Compute filter bounding box related to the biggest rate BB/pointcloud. Problem if person immobil though, the trees will not be covered.
+Define an average bouding box size from last images. Parameters are constantly updated thanks to what the learn, and discard outliers.
+Be careful with the issue of related the biggest, if one person is immobil that does not work that much anymore : both immobil and minimum.
+
+Why move does not always empty the class before ? How do unable it if the class is not declared inside a pointer, or all the member variable are not pointer ?
