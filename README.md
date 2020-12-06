@@ -82,7 +82,4 @@ The same applies for the release binaries respectively.
 ## Hardware set-up
 
 <img src="images_room/instructions/mini_movie_scenario/1.gif"/>
-<img src="images_room/instructions/mini_movie_scenario/2.gif"/>
-<img src="images_room/instructions/mini_movie_scenario/3.gif"/>
-<img src="images_room/instructions/mini_movie_scenario/4.gif"/>
-<img src="images_room/instructions/mini_movie_scenario/5.gif"/>
+
