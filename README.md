@@ -3,7 +3,7 @@
 This is the project for the capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213).
 
 <img src="images_room/instructions/rendering_realscene.png"/>
-<img src="images_room/instructions/rendering_mockscene.png"/>
+<img src="images_room/instructions/rendering_mockscene.gif"/>
 
 Luciole is C++-based software that is designed to adapt light intensity of sources located in a defined area regarding the instant position of the a person or group a person in motion into this area. This project provide the base-code for updating the light intensity of the hard-wired light grid set-up from the images retrieved from a camera connected to the computing system.
 
