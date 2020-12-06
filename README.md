@@ -81,7 +81,11 @@ The same applies for the release binaries respectively.
 
 ## Hardware set-up
 
-<img src="images_room/instructions/mini_movie_scenario/1.gif"/>
+<img src="images_room/instructions/mini_movie_scenario2/1.gif"/>
+<img src="images_room/instructions/mini_movie_scenario2/2.gif"/>
+<img src="images_room/instructions/mini_movie_scenario2/3.gif"/>
+<img src="images_room/instructions/mini_movie_scenario2/4.gif"/>
+<img src="images_room/instructions/mini_movie_scenario2/5.gif"/>
 
 
 1. Light source Initialization
