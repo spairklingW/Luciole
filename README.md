@@ -71,41 +71,13 @@ The compiler used is MSCV but other compilers of your choosing are also permitte
 
 1. Clone the repo
 2. Double click on the compile batch file. This will create the project MSCV solution for which the compiling and build can be executed.
-3. Open DisplayImage.sln, build solution.
-4. In case some libraries are not found, copy all the debug binaries from the OpenCV binaries output folder (.dll) in the debug folder. 
+3. In case some libraries are not found, create a `Debug` folder at the same level than the extracted repo sources and copy all the debug binaries from the OpenCV binaries output folder (.dll) in the debug folder. Compile again.
 `C:\3rdParty\OpenCV\build_contrib_MSCV2017_v6_x64\bin\Debug` to `C:\projectlocation\Debug`
-The same applies for the release binaries respectively. 
-5. Same for Qt libraries if needed 
+4. Same for Qt libraries if needed 
 `C:\3rdParty\Qt\5.14.2\msvc2017_64\bin` and other locations to `C:\projectlocation\Debug`
-4. Run it: go to Debug folder: `./DisplayImage.exe` (or fire-up directly from the window debugger of Visual Studio)
+5. Open DisplayImage.sln, build solution.
+The same applies for the release binaries respectively. 
+6. Run it: go to Debug folder: `./DisplayImage.exe` (or fire-up directly from the window debugger of Visual Studio)
 
 ## Hardware set-up
 
-Currently, the program crashes when you close the window. There is a small bug hidden somewhere, which has something to do with improper memory management. So your first warm-up task will be to find this bug and remove it. This should familiarize you with the code and set you up for the rest of the upcoming tasks. Have fun debugging!
-
-Aside from the bug mentioned above, there are five additional major student tasks in the Memory Management chatbot project, which are:
-
-### Task 1 : Exclusive Ownership 1
-In file `chatgui.h` / `chatgui.cpp`, make `_chatLogic` an exclusive resource to class `ChatbotPanelDialog` using an appropriate smart pointer. Where required, make changes to the code such that data structures and function parameters reflect the new structure. 
-
-### Task 2 : The Rule Of Five
-In file `chatbot.h` / `chatbot.cpp`, make changes to the class `ChatBot` such that it complies with the Rule of Five. Make sure to properly allocate / deallocate memory resources on the heap and also copy member data where it makes sense to you.  In each of the methods (e.g. the copy constructor), print a string of the type "ChatBot Copy Constructor" to the console so that you can see which method is called in later examples. 
-
-### Task 3 : Exclusive Ownership 2
-In file `chatlogic.h` / `chatlogic.cpp`, adapt the vector `_nodes` in a way that the instances of `GraphNodes` to which the vector elements refer are exclusively owned by the class `ChatLogic`. Use an appropriate type of smart pointer to achieve this. Where required, make changes to the code such that data structures and function parameters reflect the changes. When passing the `GraphNode` instances to functions, make sure to not transfer ownership and try to contain the changes to class `ChatLogic` where possible. 
-
-### Task 4 : Moving Smart Pointers
-
-In files `chatlogic.h` / `chatlogic.cpp` and `graphnodes.h` / `graphnodes.cpp` change the ownership of all instances of `GraphEdge` in a way such that each instance of `GraphNode` exclusively owns the outgoing `GraphEdges` and holds non-owning references to incoming `GraphEdges`. Use appropriate smart pointers and where required, make changes to the code such that data structures and function parameters reflect the changes. When transferring ownership from class `ChatLogic`, where all instances of `GraphEdge` are created, into instances of `GraphNode`, make sure to use move semantics. 
-
-### Task 5 : Moving the ChatBot
-
-In file `chatlogic.cpp`, create a local `ChatBot` instance on the stack at the bottom of function `LoadAnswerGraphFromFile`. Then, use move semantics to pass the `ChatBot` instance into the root node. Make sure that `ChatLogic` has no ownership relation to the `ChatBot` instance and thus is no longer responsible for memory allocation and deallocation. Note that the member `_chatBot` remains so it can be used as a communication handle between GUI and `ChatBot` instance. Make all required changes in files `chatlogic.h` / `chatlogic.cpp` and `graphnode.h` / `graphnode.cpp`. When the program is executed, messages on which part of the Rule of Five components of `ChatBot` is called should be printed to the console. When sending a query to the `ChatBot`, the output should look like the following: 
-
-```
-ChatBot Constructor
-ChatBot Move Constructor
-ChatBot Move Assignment Operator
-ChatBot Destructor
-ChatBot Destructor 
-```
