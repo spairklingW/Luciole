@@ -84,11 +84,11 @@ The code is pushed onto a raspberry which is connected to a camera hanging on th
 
 
 ## Scenario
-<img src="images_room/instructions/mini_movie_scenario/1.gif"/>
-<img src="images_room/instructions/mini_movie_scenario/2.gif"/>
-<img src="images_room/instructions/mini_movie_scenario/3.gif"/>
-<img src="images_room/instructions/mini_movie_scenario/4.gif"/>
-<img src="images_room/instructions/mini_movie_scenario/5.gif"/>
+<img src="images_room/instructions/minimovie_scenario/1.gif"/>
+<img src="images_room/instructions/minimovie_scenario/2.gif"/>
+<img src="images_room/instructions/minimovie_scenario/3.gif"/>
+<img src="images_room/instructions/minimovie_scenario/4.gif"/>
+<img src="images_room/instructions/minimovie_scenario/5.gif"/>
 
 1. Light source Initialization
 
