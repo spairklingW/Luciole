@@ -80,21 +80,27 @@ The same applies for the release binaries respectively.
 6. Run it: go to Debug folder: `./DisplayImage.exe` (or fire-up directly from the window debugger of Visual Studio)
 
 ## Hardware set-up
+The code is pushed onto a raspberry which is connected to a camera hanging on the ceiling of the room as well as wired to all light sources in the room. The camera detect the movement of the person and adapt the light intensity with the most shining light being the closest to the person given a certain frame.
 
-<img src="images_room/instructions/mini_movie_scenario2/1.gif"/>
-<img src="images_room/instructions/mini_movie_scenario2/2.gif"/>
-<img src="images_room/instructions/mini_movie_scenario2/3.gif"/>
-<img src="images_room/instructions/mini_movie_scenario2/4.gif"/>
-<img src="images_room/instructions/mini_movie_scenario2/5.gif"/>
 
+## Scenario
+<img src="images_room/instructions/mini_movie_scenario/1.gif"/>
+<img src="images_room/instructions/mini_movie_scenario/2.gif"/>
+<img src="images_room/instructions/mini_movie_scenario/3.gif"/>
+<img src="images_room/instructions/mini_movie_scenario/4.gif"/>
+<img src="images_room/instructions/mini_movie_scenario/5.gif"/>
 
 1. Light source Initialization
+
 The lights sources are lighted up one by one so that the camera can detect them and set their position regarding where they appear on the picture.
 
 2. Detect Persons motions
+
 The software is able to detect a moving instance, in the best case a person and track his motion within the field of the camera. The camera has therefore frame by frame the position in term of its barycentre of the persons in the room.
 
-3. Based on the position of the persons in the room, the software update the light intensity accordingly, with the rules that the farthest lights are shining less. The aim is to have some sort a choregraphy between the person moving and the lights intensities.
+3. Update Light Intensity
+
+Based on the position of the persons in the room, the software update the light intensity accordingly, with the rules that the farthest lights are shining less. The aim is to have some sort a choregraphy between the person moving and the lights intensities.
 
 ## Configure software
 
