@@ -4,20 +4,20 @@
 //Image Parser Mock
 int Config::numberLightSources = 4;
 int Config::numberImagesParserMock = 11;
-std::string Config::basePathImg = "C:/Users/brene/Documents/CapstoneProjectWithoutQt/images_room/scenario_2person_distinctPosition/empty_room";
+std::string Config::basePathImg = "C:/Users/brene/Documents/CapstoneProjectWithoutQt/images_room/mockScene/scenario_2person_distinctPosition/empty_room";
 std::string Config::formatImgFile = ".png";
-std::string Config::pathImgRef = "C:/Users/brene/Documents/CapstoneProjectWithoutQt/images_room/scenario_2person_distinctPosition/empty_room0.png";
+std::string Config::pathImgRef = "C:/Users/brene/Documents/CapstoneProjectWithoutQt/images_room/mockScene/scenario_2person_distinctPosition/empty_room0.png";
 
 //DisplayImage
-std::string Config::pathToVideo = "C:/Users/brene/Documents/CapstoneProjectWithoutQt/ball3.mp4";
-bool Config::mockScenario = false;
+std::string Config::pathToVideo = "C:/Users/brene/Documents/CapstoneProjectWithoutQt/images_room/realScene/ObjectMotion/ball3.mp4";
+bool Config::mockScenario = true;
 
 //Room
 double Config::thresholdInitLightMock{ 50 };
 int Config::numberFrameToEvaluateLightPose = 10;
-std::string Config::basePathVideoLightInitialization = "C:/Users/brene/Documents/CapstoneProjectWithoutQt/light_";
+std::string Config::basePathVideoLightInitialization = "C:/Users/brene/Documents/CapstoneProjectWithoutQt/images_room/realScene/LightInitialization/LightON/light_";
 std::string Config::formatVideoLightInitialization = ".mp4";
-int Config::startFrame = 100;
+int Config::startFrame = 110;
 int Config::endFrame = 150;
 double Config::thresholdDiffImages{ 10 };
 double Config::scaleMaxDistancePrevBarycentrePointForSamePoint{ 1 };
