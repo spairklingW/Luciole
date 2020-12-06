@@ -83,3 +83,22 @@ The same applies for the release binaries respectively.
 
 <img src="images_room/instructions/mini_movie_scenario/1.gif"/>
 
+
+1. Light source Initialization
+The lights sources are lighted up one by one so that the camera can detect them and set their position regarding where they appear on the picture.
+
+2. Detect Persons motions
+The software is able to detect a moving instance, in the best case a person and track his motion within the field of the camera. The camera has therefore frame by frame the position in term of its barycentre of the persons in the room.
+
+3. Based on the position of the persons in the room, the software update the light intensity accordingly, with the rules that the farthest lights are shining less. The aim is to have some sort a choregraphy between the person moving and the lights intensities.
+
+## Configure software
+
+From a pratical point of view, at the current standpoint no connection is made to any hardware. This means that the camera records is mocked by a video of a ball moving in the real case, and the light sources are mocked to a simple display onto the resulting images. These are the dots rendered, with the intensity being embodied with the diameter and the brightness of those disks. 
+
+The sofware needs some parameters to be set-up. It is not recommanded to play.around to much with those are they are already tricked to cover a simple case application:
+* Ball moving in case of a real scene
+* Square representing a moving instance in case of a mock scenario
+
+One parameter can be changed, for better understanding : the mock scenario. This is a boolean telling whether the programm should process the real scenario of the mock scenario. Please change this parameter as you wish. The configuration is hold in a class called `Config`
+
