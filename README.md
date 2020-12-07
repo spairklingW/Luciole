@@ -89,6 +89,8 @@ The code is pushed onto a raspberry which is connected to a camera hanging on th
 <img src="images_room/instructions/minimovie_scenario/3.gif"/>
 <img src="images_room/instructions/minimovie_scenario/4.gif"/>
 <img src="images_room/instructions/minimovie_scenario/5.gif"/>
+<img src="images_room/instructions/minimovie_scenario/6.gif"/>
+<img src="images_room/instructions/minimovie_scenario/7.gif"/>
 
 1. Light source Initialization
 
@@ -110,5 +112,5 @@ The sofware needs some parameters to be set-up. It is not recommanded to play.ar
 * Ball moving in case of a real scene
 * Square representing a moving instance in case of a mock scenario
 
-One parameter can be changed, for better understanding : the mock scenario. This is a boolean telling whether the programm should process the real scenario of the mock scenario. Please change this parameter as you wish. The configuration is hold in a class called `Config`
+One parameter can be changed, for better understanding : `mockScenario = true`. This is a boolean telling whether the programm should process the real scenario of the mock scenario. Please change this parameter as you wish. The configuration is hold in a class called `Config`
 
