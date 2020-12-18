@@ -1,32 +1,33 @@
 #include <iostream>
 #include "Config.h"
+#include "JsonParser.h"
 
 //Image Parser Mock
-int Config::numberLightSources = 4;
-int Config::numberImagesParserMock = 11;
-std::string Config::basePathImg = "C:/Users/brene/Documents/CapstoneProjectWithoutQt/images_room/mockScene/scenario_2person_distinctPosition/empty_room";
-std::string Config::formatImgFile = ".png";
-std::string Config::pathImgRef = "C:/Users/brene/Documents/CapstoneProjectWithoutQt/images_room/mockScene/scenario_2person_distinctPosition/empty_room0.png";
+int Config::numberLightSources = JsonParser::ParseIntParamFromJsonContainer("numberImagesParserMock");
+int Config::numberImagesParserMock = JsonParser::ParseIntParamFromJsonContainer("numberImagesParserMock");
+std::string Config::basePathImg = JsonParser::ParseStringParamFromJsonContainer("basePathImg");
+std::string Config::formatImgFile = JsonParser::ParseStringParamFromJsonContainer("formatImgFile");
+std::string Config::pathImgRef = JsonParser::ParseStringParamFromJsonContainer("pathImgRef");
 
 //DisplayImage
-std::string Config::pathToVideo = "C:/Users/brene/Documents/CapstoneProjectWithoutQt/images_room/realScene/ObjectMotion/ball3.mp4";
-bool Config::mockScenario = true;
+std::string Config::pathToVideo = JsonParser::ParseStringParamFromJsonContainer("pathToVideo");
+bool Config::mockScenario = JsonParser::ParseBoolParamFromJsonContainer("mockScenario");
 
 //Room
-double Config::thresholdInitLightMock{ 50 };
-int Config::numberFrameToEvaluateLightPose = 10;
-std::string Config::basePathVideoLightInitialization = "C:/Users/brene/Documents/CapstoneProjectWithoutQt/images_room/realScene/LightInitialization/LightON/light_";
-std::string Config::formatVideoLightInitialization = ".mp4";
-int Config::startFrame = 110;
-int Config::endFrame = 150;
-double Config::thresholdDiffImages{ 10 };
-double Config::scaleMaxDistancePrevBarycentrePointForSamePoint{ 1 };
-double Config::scaleMaxDistanceCurrentBarPrevPoint{ 8 };
-int Config::totalIntensity{ 100 };
+double Config::thresholdInitLightMock{ JsonParser::ParseDoubleParamFromJsonContainer("thresholdInitLightMock")};
+int Config::numberFrameToEvaluateLightPose{ JsonParser::ParseIntParamFromJsonContainer("numberFrameToEvaluateLightPose") };
+std::string Config::basePathVideoLightInitialization = JsonParser::ParseStringParamFromJsonContainer("basePathVideoLightInitialization");
+std::string Config::formatVideoLightInitialization = JsonParser::ParseStringParamFromJsonContainer("formatVideoLightInitialization");
+int Config::startFrame{ JsonParser::ParseIntParamFromJsonContainer("startFrame") };
+int Config::endFrame{ JsonParser::ParseIntParamFromJsonContainer("endFrame") };
+double Config::thresholdDiffImages{ JsonParser::ParseDoubleParamFromJsonContainer("thresholdDiffImages") };
+double Config::scaleMaxDistancePrevBarycentrePointForSamePoint{ JsonParser::ParseDoubleParamFromJsonContainer("scaleMaxDistancePrevBarycentrePointForSamePoint") };
+double Config::scaleMaxDistanceCurrentBarPrevPoint{ JsonParser::ParseDoubleParamFromJsonContainer("scaleMaxDistanceCurrentBarPrevPoint") };
+int Config::totalIntensity{ JsonParser::ParseIntParamFromJsonContainer("totalIntensity") };
 
 //Image Processor
-float Config::maxThresholdFilterLightBrightness{ 245 };
-int Config::thresholdFilterLightBrightness{ 250 };
-float Config::rateFilterContourByShape{ 0.2 };
-double Config::eraseRateFilterByPoints{ 0.5 };
-double Config::eraseRateFilterByBoundingBoxSize{ 0.8 };
+float Config::maxThresholdFilterLightBrightness{ JsonParser::ParseFloatParamFromJsonContainer("maxThresholdFilterLightBrightness") };
+int Config::thresholdFilterLightBrightness{ JsonParser::ParseIntParamFromJsonContainer("thresholdFilterLightBrightness") };
+float Config::rateFilterContourByShape{ JsonParser::ParseFloatParamFromJsonContainer("rateFilterContourByShape") };
+double Config::eraseRateFilterByPoints{ JsonParser::ParseDoubleParamFromJsonContainer("eraseRateFilterByPoints") };
+double Config::eraseRateFilterByBoundingBoxSize{ JsonParser::ParseDoubleParamFromJsonContainer("eraseRateFilterByBoundingBoxSize") };
