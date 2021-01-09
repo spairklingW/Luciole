@@ -10,58 +10,18 @@
 #include <numeric>
 #include <string>
 #include <functional>
-#include "LightSource.h"
-#include "ImageProcessor.h"
-#include "ImageParser.h"
-#include "RenderingSimulator.h"
-#include "Room.h"
 #include "DisplayImage.h"
-#include "Config.h"
 
 using namespace cv;
 
-void runMockScenario(int numberLightSources)
-{
-	std::shared_ptr < Mat> imageRefMock = std::make_shared<Mat>(imread(Config::pathImgRef, IMREAD_GRAYSCALE));
-	std::shared_ptr<RenderingSimulator>  hardwareSimulatorMock = std::make_shared<RenderingSimulator>(imageRefMock);
-	Room roomMock(numberLightSources, hardwareSimulatorMock, *imageRefMock);
-
-	namedWindow("InitializeLightsSources", WINDOW_NORMAL);
-	imshow("InitializeLightsSources", *imageRefMock);
-
-	roomMock.ModelInitializationLightSources();
-	roomMock.InitializePositionMovingInstancesMock();
-	roomMock.InitializeMockImages();
-
-	roomMock.CyclicUpdateLightsFromMockImages();
-
-	waitKey(0);
-}
-
-void runRealScenario(int numberLightSources)
-{
-	std::shared_ptr < Mat> imageRefRoom = std::make_shared<Mat>(ImageParser::InitializeFrameWithoutMotions(Config::pathToVideo));
-	std::shared_ptr<RenderingSimulator>  hardwareSimulator = std::make_shared<RenderingSimulator>(imageRefRoom);
-	Room room(numberLightSources, hardwareSimulator, *imageRefRoom);
-
-	room.InitializeLightSourcesFromRealScene();
-	room.CyclicUpdateLightsFromImages(Config::pathToVideo);
-
-	waitKey(0);
-}
 
 int main(int argc, char** argv )
 {
-	// ******************** Mock Scene ***************************************************************************
-	if (Config::mockScenario == true)
-	{
-		runMockScenario(Config::numberLightSources);
-	}
-	// ******************** Real Scene ***************************************************************************
-	else
-	{
-		runRealScenario(Config::numberLightSources);
-	}
+	// ******************** Test OpenCV import ***************************************************************************
+
+	Mat tigerImg = imread("C:/Users/brene/Documents/CapstoneProjectWithoutQt/images_room/TestOpenCV/tiger.jpg", IMREAD_GRAYSCALE);
+	namedWindow("tiger", WINDOW_NORMAL);
+	imshow("tiger", tigerImg);
 	
     waitKey(0);
     return 0;
