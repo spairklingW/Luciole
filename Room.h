@@ -5,6 +5,7 @@
 #include "ImageParser.h"
 #include "ImageParserMock.h"
 #include "RenderingSimulator.h"
+#include "JsonParser.h"
 
 #include <string>
 

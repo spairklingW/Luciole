@@ -3,7 +3,7 @@
 #include "JsonParser.h"
 
 //Image Parser Mock
-int Config::numberLightSources = JsonParser::ParseIntParamFromJsonContainer("numberImagesParserMock");
+int Config::numberLightSources = JsonParser::ParseIntParamFromJsonContainer("numberLightSources");
 int Config::numberImagesParserMock = JsonParser::ParseIntParamFromJsonContainer("numberImagesParserMock");
 std::string Config::basePathImg = JsonParser::ParseStringParamFromJsonContainer("basePathImg");
 std::string Config::formatImgFile = JsonParser::ParseStringParamFromJsonContainer("formatImgFile");

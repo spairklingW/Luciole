@@ -5,6 +5,7 @@
 #include "opencv2/imgproc.hpp"
 #include <opencv2/core.hpp>
 #include <iostream>
+#include <fstream>
 #include <map>
 #include <vector>
 #include <numeric>
@@ -17,8 +18,11 @@
 #include "Room.h"
 #include "DisplayImage.h"
 #include "Config.h"
+#include <nlohmann/json.hpp>
+#include "JsonParser.h"
 
 using namespace cv;
+using json = nlohmann::json;
 
 void runMockScenario(int numberLightSources)
 {
@@ -52,6 +56,25 @@ void runRealScenario(int numberLightSources)
 
 int main(int argc, char** argv )
 {
+	// ******************** Json Test ***************************************************************************
+	/*
+	JsonParser jsonParser;
+	jsonParser.Practice();	
+
+	std::cout << "print variable : " << Config::pathToVideo << std::endl;
+	*/
+
+	// ******************** Test OpenCV import ***************************************************************************
+
+	Mat tigerImg = imread("C:/Users/brene/Documents/CapstoneProjectWithoutQt/images_room/TestOpenCV/tiger.jpg", IMREAD_GRAYSCALE);
+	mean(tigerImg);
+	std::cout << mean(tigerImg);
+	//std::cout << tigerImg.at<Vec3b>(20, 20);
+	namedWindow("tiger", WINDOW_NORMAL);
+	imshow("tiger", tigerImg);
+
+	// Use Json parser to update lights
+	
 	// ******************** Mock Scene ***************************************************************************
 	if (Config::mockScenario == true)
 	{
@@ -62,6 +85,7 @@ int main(int argc, char** argv )
 	{
 		runRealScenario(Config::numberLightSources);
 	}
+	
 	
     waitKey(0);
     return 0;

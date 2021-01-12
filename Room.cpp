@@ -81,6 +81,8 @@ void Room::ModelInitializationLightSources()
 
 		idxLightSource++;
 	}
+
+	JsonParser::UpdateLightsIntensityOnJsonFile(_lightSources);
 }
 
 void Room::InitializeMockImages()
@@ -171,6 +173,8 @@ void Room::InitializeLightSourcesFromRealScene()
 		_imageParser.joinRunningFrame();
 		_imageParser.clearQueue();
 	}
+
+	JsonParser::UpdateLightsIntensityOnJsonFile(_lightSources);
 }
 
 Mat Room::ConvertFrameToGreyChar(Mat & imagesrc)
@@ -498,6 +502,8 @@ void Room::UpdateLightsIntensity()
 
 		FinalRendering();
 	}
+
+	JsonParser::UpdateLightsIntensityOnJsonFile(_lightSources);
 }
 
 void Room::FinalRendering()

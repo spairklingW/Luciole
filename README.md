@@ -66,6 +66,17 @@ This additionnal packages ensure the provisionning of more functionalities and h
 
 Note : If the debug mode is selected then the binaries will be build for debug only. For release select the release options and start over through the above steps again.
 
+## Nlohmann Installation instructions (Windows)
+* Some general instruction websites are provided here 
+The repository below is a leight-weight package not containing the test data, but very mighty and easy to install.
+[Light-weight repo used for the project](https://github.com/ArthurSonzogni/nlohmann_json_cmake_fetchcontent/blob/master/include/nlohmann/json.hpp)
+The global release is accessible here
+[Global Repo](https://github.com/nlohmann/json)
+
+1. Download nlohmann source code [here](https://github.com/ArthurSonzogni/nlohmann_json_cmake_fetchcontent/blob/master/include/nlohmann/json.hpp) and place it at the same level than the root level of the source code. Check the path compatibility with what is declared in the CMake File of the project.
+   For instance here : C:\Users\brene\Documents\CapstoneProjectWithoutQt\nlohmann\include\nlohmann, the source code being located under CapstoneProjects...
+
+
 ## Basic Build Instructions
 The compiler used is MSCV but other compilers of your choosing are also permitted.
 
