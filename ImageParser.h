@@ -14,6 +14,7 @@
 #include "opencv2/imgproc.hpp"
 #include <opencv2/core.hpp>
 #include "Config.h"
+#include <condition_variable>
 //#include "Room.h"
 
 using namespace cv;

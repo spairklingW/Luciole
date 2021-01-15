@@ -53,9 +53,9 @@ public:
 	static float ParseFloatParamFromJsonContainer(const std::string paramJson);
 
 	template<class T>
-	static void WriteParamToJsonObject(const std::string paramKey, const T paramValue, json & jsonObject);
+	static void WriteParamToJsonObject(const std::string paramKey, T paramValue, json & jsonObject);
 
-	static void UpdateLightsIntensityOnJsonFile(std::vector<LightSource> lightSources);
+	static void UpdateLightsIntensityOnJsonFile(std::vector<LightSource>& lightSources);
 
 	void FillLightSourcesContainer(std::vector<LightSource> &lightSources);
 

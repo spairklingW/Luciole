@@ -37,8 +37,8 @@ void ImageProcessor::GetLightPositionFromHighestPixelsI(const Mat & srcImg, Mat&
 	lightPose.y = meanX;
 
 	circle(imageBright, Point{ static_cast<int>(meanY), static_cast<int>(meanX) }, 10, Scalar(150, 140, 150), 1, 8, 0);
-	namedWindow("Binary Image" + std::to_string(indexFrameStream) + std::to_string(i) + "i", WINDOW_NORMAL);
-	imshow("Binary Image" + std::to_string(indexFrameStream) + std::to_string(i) + "i", imageBright);
+	namedWindow("Binary Image" + std::to_string(0), WINDOW_NORMAL);
+	imshow("Binary Image" + std::to_string(0), imageBright);
 }
 
 cv::Mat ImageProcessor::FilterBrightestAboveThreshold(const cv::Mat& src, float max_threshold, float& mean_X, float& mean_Y) {
@@ -512,7 +512,7 @@ void ImageProcessor::ComputeBarycentresOfPeopleContours(const Mat & diffImage, s
 	}
 }
 
-void ImageProcessor::GetPositionObjectsFromDiffImage(Mat & prevImage, Mat & currentImage, double threshold, std::vector<Point>& barycentresContours)
+void ImageProcessor::GetPositionObjectsFromDiffImage(Mat && prevImage, Mat & currentImage, double threshold, std::vector<Point>& barycentresContours)
 {
 	Mat diffImage;
 	Mat diffImageSquare;

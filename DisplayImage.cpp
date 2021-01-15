@@ -66,12 +66,12 @@ int main(int argc, char** argv )
 
 	// ******************** Test OpenCV import ***************************************************************************
 
-	Mat tigerImg = imread("C:/Users/brene/Documents/CapstoneProjectWithoutQt/images_room/TestOpenCV/tiger.jpg", IMREAD_GRAYSCALE);
-	mean(tigerImg);
-	std::cout << mean(tigerImg);
+	//Mat tigerImg = imread("C:/Users/brene/Documents/CapstoneProjectWithoutQt/images_room/TestOpenCV/tiger.jpg", IMREAD_GRAYSCALE);
+	//mean(tigerImg);
+	//std::cout << mean(tigerImg);
 	//std::cout << tigerImg.at<Vec3b>(20, 20);
-	namedWindow("tiger", WINDOW_NORMAL);
-	imshow("tiger", tigerImg);
+	//namedWindow("tiger", WINDOW_NORMAL);
+	//imshow("tiger", tigerImg);
 
 	// Use Json parser to update lights
 	

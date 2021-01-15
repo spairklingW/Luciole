@@ -157,8 +157,8 @@ void Room::InitializeLightSourcesFromRealScene()
 
 				std::unique_ptr<Mat> currentImage = std::make_unique<Mat>(curgrayscaleFrameChar.clone());
 
-				namedWindow("current Image Cyclic" + std::to_string(indexFrameStream)+ "i" + std::to_string(i), WINDOW_NORMAL);
-				imshow("current Image Cyclic" + std::to_string(indexFrameStream) + "i" + std::to_string(i), *currentImage);
+				namedWindow("current Image Cyclic" + std::to_string(0)+ "0" + std::to_string(0), WINDOW_NORMAL);
+				imshow("current Image Cyclic" + std::to_string(0) + "0" + std::to_string(0), *currentImage);
 
 				Mat imageThreasholded;
 				Point lightPose;
@@ -414,7 +414,7 @@ void Room::ComputePositionMovingAndImmobilInstances(std::unique_ptr<Mat>&& prevI
 {
 	std::vector<Point> barycentresContoursMovingInstances;
 
-	_imageProcessor.GetPositionObjectsFromDiffImage(*prevImageCamera, *currentImageFromCamera, Config::thresholdDiffImages, barycentresContoursMovingInstances);
+	_imageProcessor.GetPositionObjectsFromDiffImage(std::move(*prevImageCamera), *currentImageFromCamera, Config::thresholdDiffImages, barycentresContoursMovingInstances);
 	
 	if (Room::displayAllImages == true)
 	{
@@ -504,6 +504,7 @@ void Room::UpdateLightsIntensity()
 	}
 
 	JsonParser::UpdateLightsIntensityOnJsonFile(_lightSources);
+	//JsonParser::ParseIntParamFromJsonContainer("ok");
 }
 
 void Room::FinalRendering()
@@ -531,11 +532,11 @@ void Room::FinalRendering()
 	}
 
 	
-	namedWindow("Current Image" + std::to_string(Room::indexDisplay), WINDOW_NORMAL);
-	imshow("Current Image" + std::to_string(Room::indexDisplay), _currentImage.clone());
+	namedWindow("Current Image" + std::to_string(0), WINDOW_NORMAL);
+	imshow("Current Image" + std::to_string(0), _currentImage.clone());
 
-	namedWindow("Final Rendering" + std::to_string(Room::indexDisplay), WINDOW_NORMAL);
-	imshow("Final Rendering" + std::to_string(Room::indexDisplay), imageDisplay);
+	namedWindow("Final Rendering" + std::to_string(0), WINDOW_NORMAL);
+	imshow("Final Rendering" + std::to_string(0), imageDisplay);
 }
 
 double Room::ComputeDistance(const Point & pointFrom, const Point & pointTo)
