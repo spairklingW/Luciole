@@ -4,8 +4,8 @@
 #include <ctime>
 #include "JsonParser.h"
 
-std::string JsonParser::pathToConfigFileStatic = "/home/pi/git_repos/Luciole_Main/Luciole/Config/config.json";
-std::string JsonParser::pathToLightValuesFileStatic = "/home/pi/git_repos/Luciole_Main/Luciole/Config/lightIntensity.json";
+std::string JsonParser::pathToConfigFileStatic = "/home/pi/git_repos/Luciole_Main/Luciole_raspi/Luciole/Config/config.json";
+std::string JsonParser::pathToLightValuesFileStatic = "/home/pi/git_repos/Luciole_Main/Luciole_raspi/Luciole/Config/lightIntensity.json";
 
 //Mat JsonParser::_hardwareRenderingStatic{imread("C:/Users/brene/Documents/CapstoneProjectWithoutQt/Debug/move1.jpeg")};
 // constructor WITHOUT memory allocation
@@ -120,6 +120,7 @@ void JsonParser::UpdateLightsIntensityOnJsonFile(std::vector<LightSource>& light
 	for (auto & lightSource : lightSources)
 	{
 		//auto intensity_parse = lightSource.GetId();
+		std::cout << "PRINT TO FILE   !" << std::endl;
 		JsonParser::WriteParamToJsonObject("light " + std::to_string(lightSource.GetId()), lightSource.GetIntensity(), jsonObject);
 		//JsonParser::WriteParamToJsonObject("light " + std::to_string(3),2 , jsonObject);
 	}
