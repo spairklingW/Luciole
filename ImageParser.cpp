@@ -124,6 +124,10 @@ void ImageParser::startCapture(const std::string & pathToVideo)
 	_cap = VideoCapture(pathToVideo);
 }
 
+void ImageParser::releaseCap()
+{
+	_cap.release();
+}
 
 template<class T>
 MessageQueue<T>::MessageQueue()
