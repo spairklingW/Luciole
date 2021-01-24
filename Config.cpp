@@ -24,6 +24,7 @@ double Config::thresholdDiffImages{ JsonParser::ParseDoubleParamFromJsonContaine
 double Config::scaleMaxDistancePrevBarycentrePointForSamePoint{ JsonParser::ParseDoubleParamFromJsonContainer("scaleMaxDistancePrevBarycentrePointForSamePoint") };
 double Config::scaleMaxDistanceCurrentBarPrevPoint{ JsonParser::ParseDoubleParamFromJsonContainer("scaleMaxDistanceCurrentBarPrevPoint") };
 int Config::totalIntensity{ JsonParser::ParseIntParamFromJsonContainer("totalIntensity") };
+bool Config::useQueueBufferFrame{ JsonParser::ParseBoolParamFromJsonContainer("useQueueBufferFrame") };
 
 //Image Processor
 float Config::maxThresholdFilterLightBrightness{ JsonParser::ParseFloatParamFromJsonContainer("maxThresholdFilterLightBrightness") };

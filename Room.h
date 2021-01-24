@@ -46,6 +46,10 @@ public:
 	// Loop Over Images Mock Scenario
 	void CyclicUpdateLightsFromMockImages();
 
+	void getFrame();
+
+	void startRecording(const std::string & pathToVideo);
+
 	// Loop Over Images Real Scenario
 	void CyclicUpdateLightsFromImages(const std::string & pathToVideo);
 

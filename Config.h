@@ -48,6 +48,7 @@ public:
 	static double scaleMaxDistancePrevBarycentrePointForSamePoint;
 	static double scaleMaxDistanceCurrentBarPrevPoint;
 	static int totalIntensity;
+	static bool useQueueBufferFrame;
 
 	//Image Processor
 	static float maxThresholdFilterLightBrightness;

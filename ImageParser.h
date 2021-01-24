@@ -62,6 +62,12 @@ public:
 
 	void clearQueue();
 
+	void getLastImageFromCameraStream(Mat & lastFrame);
+
+	void startCapture(const std::string & pathToVideo);
+
+	void releaseCap();
+
 	void cameraStream(const std::string & pathToVideo);
 
 	static Mat InitializeFrameWithoutMotions(const std::string & pathToVideo);
@@ -78,6 +84,7 @@ private:
 	Mat _refImageWithoutMotion;
 	std::thread _threadRecordFrames;
 	bool _cameraGetNewFrames = true;
+	VideoCapture _cap;
 };
 
 #endif 
