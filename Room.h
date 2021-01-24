@@ -49,6 +49,10 @@ public:
 	// Loop Over Images Real Scenario
 	void CyclicUpdateLightsFromImages(const std::string & pathToVideo);
 
+	void getFrame();
+
+	void startRecording(const std::string & pathToVideo);
+
 	void ProcessMovingInstances(std::unique_ptr<Mat>&& prevImageCamera, std::unique_ptr<Mat>&& currentImageFromCamera, Mat& renderingPositions, int index);
 
 	void ComputePositionMovingAndImmobilInstances(std::unique_ptr<Mat>&& prevImageCamera, std::unique_ptr<Mat>&& currentImageFromCamera, Mat& renderingPositions);

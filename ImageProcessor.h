@@ -49,7 +49,7 @@ public:
 
 	void GetContoursPeopleInRoom(std::map<size_t, std::vector<Point>>& contoursSorted, std::vector<std::vector<Point>>& contoursMovingInstances, std::vector<Rect>& biggestBoundingBoxes, std::map<size_t, std::vector<Point>, std::greater<int>>& contoursSortedDescendingOrder, const std::vector<std::vector<Point> >& contours);
 
-	void GetPositionObjectsFromDiffImage(Mat & prevImage, Mat & currentImage, double threshold, std::vector<Point>& barycentresContours);
+	void GetPositionObjectsFromDiffImage(Mat && prevImage, Mat & currentImage, double threshold, std::vector<Point>& barycentresContours);
 
 
 private:

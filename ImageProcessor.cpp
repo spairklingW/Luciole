@@ -512,7 +512,7 @@ void ImageProcessor::ComputeBarycentresOfPeopleContours(const Mat & diffImage, s
 	}
 }
 
-void ImageProcessor::GetPositionObjectsFromDiffImage(Mat & prevImage, Mat & currentImage, double threshold, std::vector<Point>& barycentresContours)
+void ImageProcessor::GetPositionObjectsFromDiffImage(Mat && prevImage, Mat & currentImage, double threshold, std::vector<Point>& barycentresContours)
 {
 	Mat diffImage;
 	Mat diffImageSquare;

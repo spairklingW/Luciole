@@ -195,7 +195,8 @@ void Room::CyclicUpdateLightsFromImages(const std::string & pathToVideo)
 	Room::heightImage = _refImageWithoutMotion.size().height;
 	Room::widthImage = _refImageWithoutMotion.size().width;
 
-	_imageParser.startCameraRecord(pathToVideo);
+	startRecording(pathToVideo);
+
 	Mat renderingPositions = Mat::zeros(_refImageWithoutMotion.size(), CV_32F);
 	_previousImage = _refImageWithoutMotion.clone();
 	
@@ -206,11 +207,10 @@ void Room::CyclicUpdateLightsFromImages(const std::string & pathToVideo)
 		Room::indexDisplay++;
 		if (Room::indexDisplay < Config::startFrame)
 		{
-			Mat currentFrame = _imageParser.getFrameFromCameraQueue();
+			getFrame();
 		}
 		else{
-			_currentImage = _imageParser.getFrameFromCameraQueue();
-
+			getFrame();
 			std::unique_ptr<Mat> prevImage = std::make_unique<Mat>(ConvertFrameToGreyChar(_previousImage));
 			std::unique_ptr<Mat> currentImage = std::make_unique<Mat>(ConvertFrameToGreyChar(_currentImage));
 
@@ -232,6 +232,34 @@ void Room::CyclicUpdateLightsFromImages(const std::string & pathToVideo)
 				break;
 			}
 		}
+	}
+	if (Config::useQueueBufferFrame == false)
+	{
+		_imageParser.releaseCap();
+	}
+}
+
+void Room::getFrame()
+{
+	if (Config::useQueueBufferFrame == true)
+	{
+		_currentImage = _imageParser.getFrameFromCameraQueue();
+	}
+	else
+	{
+		_imageParser.getLastImageFromCameraStream(_currentImage);
+	}
+}
+
+void Room::startRecording(const std::string & pathToVideo)
+{
+	if (Config::useQueueBufferFrame == true)
+	{
+		_imageParser.startCameraRecord(pathToVideo);
+	}
+	else
+	{
+		_imageParser.startCapture(pathToVideo);
 	}
 }
 
@@ -414,7 +442,7 @@ void Room::ComputePositionMovingAndImmobilInstances(std::unique_ptr<Mat>&& prevI
 {
 	std::vector<Point> barycentresContoursMovingInstances;
 
-	_imageProcessor.GetPositionObjectsFromDiffImage(*prevImageCamera, *currentImageFromCamera, Config::thresholdDiffImages, barycentresContoursMovingInstances);
+	_imageProcessor.GetPositionObjectsFromDiffImage(std::move(*prevImageCamera), *currentImageFromCamera, Config::thresholdDiffImages, barycentresContoursMovingInstances);
 	
 	if (Room::displayAllImages == true)
 	{

@@ -63,6 +63,12 @@ public:
 
 	void cameraStream(const std::string & pathToVideo);
 
+	void getLastImageFromCameraStream(Mat & lastFrame);
+
+	void startCapture(const std::string & pathToVideo);
+
+	void releaseCap();
+
 	static Mat InitializeFrameWithoutMotions(const std::string & pathToVideo);
 
 	bool IsCameraInActiveState() { return _cameraGetNewFrames; };
@@ -77,6 +83,7 @@ private:
 	Mat _refImageWithoutMotion;
 	std::thread _threadRecordFrames;
 	bool _cameraGetNewFrames = true;
+	VideoCapture _cap;
 };
 
 #endif 

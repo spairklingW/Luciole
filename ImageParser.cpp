@@ -80,6 +80,31 @@ void ImageParser::cameraStream(const std::string & pathToVideo)
 	//destroyAllWindows();
 }
 
+void ImageParser::getLastImageFromCameraStream(Mat& lastFrame)
+{
+	// Check if camera opened successfully
+	if (!_cap.isOpened()) {
+		std::cout << "Error opening video stream or file" << std::endl;
+	}
+	else
+	{
+		Mat frame;
+		_cap >> frame;
+
+		lastFrame = frame.clone();
+	}
+}
+
+void ImageParser::startCapture(const std::string & pathToVideo)
+{
+	_cap = VideoCapture(pathToVideo);
+}
+
+void ImageParser::releaseCap()
+{
+	_cap.release();
+}
+
 Mat ImageParser::InitializeFrameWithoutMotions(const std::string & pathToVideo)
 {
 	VideoCapture cap(pathToVideo);
