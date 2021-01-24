@@ -68,7 +68,8 @@ int main()
         cv::Mat frame(imgHeight, imgWidth, CV_8UC1, buf);
         cv::imshow("video", frame);
         framesNumber++;
-	
+	cv::imwrite(folder_name + "frame.jpg", frame);
+
         char k = cv::waitKey(1);
         if (k == 'q' || k == 'Q')
         {
