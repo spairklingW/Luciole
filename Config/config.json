@@ -6,6 +6,7 @@
     "pathImgRef": "/home/pi/git_repos/Luciole_Main/Luciole_raspi/Luciole/images_room/mockScene/scenario_2person_distinctPosition/empty_room0.png",
 	"pathToVideo": "/home/pi/git_repos/Luciole_Main/Luciole_raspi/Luciole/images_room/realScene/ObjectMotion/ball3.mp4",
     "mockScenario": false,
+	"useQueueBufferFrame":true,
 	"thresholdInitLightMock": 50,
     "numberFrameToEvaluateLightPose": 10,
 	"basePathVideoLightInitialization": "/home/pi/git_repos/Luciole_Main/Luciole_raspi/Luciole/images_room/realScene/LightInitialization/LightON/light_",
