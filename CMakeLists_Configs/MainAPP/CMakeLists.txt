@@ -10,9 +10,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR})
 set(OpenCV_DIR ${OpenCV_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/Debug)
 
 SET(OpenCV_DIR usr/local/lib/cmake/opencv4)
-SET(raspicam_DIR /usr/local/lib/cmake)
 
-find_package(raspicam REQUIRED)
 find_package( OpenCV REQUIRED )
 
 include_directories( ${OpenCV_INCLUDE_DIRS} )
@@ -21,5 +19,6 @@ add_executable( DisplayImage DisplayImage.cpp JsonParser.cpp JsonParser.h ImageP
 
 add_subdirectory(nlohmann)
 
-target_link_libraries( DisplayImage PUBLIC ${OpenCV_LIBS} ${raspicam_CV_LIBS} nlohmann_json::nlohmann_json)
+target_link_libraries( DisplayImage PUBLIC ${OpenCV_LIBS} nlohmann_json::nlohmann_json)
+
 

@@ -2,6 +2,9 @@ cmake_minimum_required (VERSION 2.8)
 
 project (raspicam_test)
 
+SET(raspicam_DIR /usr/local/lib/cmake)
+SET(OpenCV_DIR usr/local/lib/cmake/opencv4)
+
 find_package(raspicam REQUIRED)
 find_package(OpenCV)
 
