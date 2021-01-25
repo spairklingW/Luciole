@@ -73,6 +73,33 @@ int main ( int argc,char **argv ) {
 	//Start capture
 	cout<<"Capturing "<<nCount<<" frames ...."<<endl;
 	time ( &timer_begin );
+	
+	/*----------------------------------------------------------------------------------*/
+	Mat imageref;
+	Camera.grab();
+	Camera.retrieve(imageref);
+	std::shared_ptr < Mat> imageRefRoom = std::make_shared<Mat>(imageref);
+	std::shared_ptr<RenderingSimulator>  hardwareSimulator = std::make_shared<RenderingSimulator>(imageRefRoom);
+	Room room(4, hardwareSimulator, *imageRefRoom);
+
+	room.InitializeLightSourcesFromRealScene();
+	Mat imagestream;
+	room.GetFirstStreamImage(imagestream);
+	
+	Mat imagestreamcontinous;
+	for ( int i=0; i<nCount; i++ ) {
+		Camera.grab();
+		Camera.retrieve ( imagestreamcontinous);
+		if ( i%5==0 )
+		{
+			room.UpdateLightsFromStreamImages(imagestreamcontinous);
+			cout<<"\r captured "<<i<<" images"<<std::flush;
+		}
+	}
+	
+	
+	/*----------------------------------------------------------------------------------*/
+	
 	for ( int i=0; i<nCount; i++ ) {
 		Camera.grab();
 		Camera.retrieve ( image);
@@ -87,6 +114,40 @@ int main ( int argc,char **argv ) {
 	//save image 
 	cv::imwrite("raspicam_cv_image.jpg",image);
 	cout<<"Image saved at raspicam_cv_image.jpg"<<endl;
+
+
+	// ******************** Json Test ***************************************************************************
+	
+	//JsonParser jsonParser;
+	//jsonParser.Practice();	
+
+	//std::cout << "print variable : " << Config::pathToVideo << std::endl;
+	
+
+	// ******************** Test OpenCV import ***************************************************************************
+
+	//Mat tigerImg = imread("C:/Users/brene/Documents/CapstoneProjectWithoutQt/images_room/TestOpenCV/tiger.jpg", IMREAD_GRAYSCALE);
+	//mean(tigerImg);
+	//std::cout << mean(tigerImg);
+	//std::cout << tigerImg.at<Vec3b>(20, 20);
+	//namedWindow("tiger", WINDOW_NORMAL);
+	//imshow("tiger", tigerImg);
+
+	// Use Json parser to update lights
+	
+	// ******************** Mock Scene ***************************************************************************
+	if (Config::mockScenario == true)
+	{
+		runMockScenario(Config::numberLightSources);
+	}
+	// ******************** Real Scene ***************************************************************************
+	else
+	{
+		runRealScenario(Config::numberLightSources);
+	}
+	
+	
+    	waitKey(0);
 }
 
 

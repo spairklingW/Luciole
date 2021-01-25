@@ -205,11 +205,10 @@ void Room::UpdateLightsFromStreamImages(Mat& imagestream)
 
 		namedWindow("current Image Cyclic" + std::to_string(indexDisplay), WINDOW_NORMAL);
 		imshow("current Image Cyclic" + std::to_string(indexDisplay), *currentImage);
-		}
-
-		ProcessMovingInstances(std::move(prevImage), std::move(currentImage), renderingPositions, Room::indexDisplay);
-		_previousImage = _currentImage;
 	}
+
+	ProcessMovingInstances(std::move(prevImage), std::move(currentImage), renderingPositions, Room::indexDisplay);
+	_previousImage = _currentImage;
 }
 
 void Room::GetFirstStreamImage(Mat& imagestream)

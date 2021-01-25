@@ -48,7 +48,7 @@ public:
 
 	void GetFirstStreamImage(Mat& imagestream);
 
-	void UpdateLightsFromStreamImages(Mat& imagestream)
+	void UpdateLightsFromStreamImages(Mat& imagestream);
 
 	void getFrame();
 
