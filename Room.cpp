@@ -188,6 +188,38 @@ Mat Room::ConvertFrameToGreyChar(Mat & imagesrc)
 	return curgrayscaleFrame32F;
 }
 
+void Room::UpdateLightsFromStreamImages(Mat& imagestream)
+{
+	Room::indexDisplay++;
+	_currentImage = imagestream;
+
+	std::unique_ptr<Mat> prevImage = std::make_unique<Mat>(ConvertFrameToGreyChar(_previousImage));
+	std::unique_ptr<Mat> currentImage = std::make_unique<Mat>(ConvertFrameToGreyChar(_currentImage));
+
+	Mat renderingPositions = Mat::zeros(imagestream.size(), CV_32F);
+
+	if (Room::displayAllImages == true)
+	{
+		namedWindow("prev Image Cyclic" + std::to_string(indexDisplay), WINDOW_NORMAL);
+		imshow("prev Image Cyclic" + std::to_string(indexDisplay), *prevImage);
+
+		namedWindow("current Image Cyclic" + std::to_string(indexDisplay), WINDOW_NORMAL);
+		imshow("current Image Cyclic" + std::to_string(indexDisplay), *currentImage);
+		}
+
+		ProcessMovingInstances(std::move(prevImage), std::move(currentImage), renderingPositions, Room::indexDisplay);
+		_previousImage = _currentImage;
+	}
+}
+
+void Room::GetFirstStreamImage(Mat& imagestream)
+{
+	Room::heightImage = imagestream.size().height;
+	Room::widthImage = imagestream.size().width;
+
+	_previousImage = imagestream.clone();
+}
+
 void Room::CyclicUpdateLightsFromImages(const std::string & pathToVideo)
 {
 	_refImageWithoutMotion = ImageParser::InitializeFrameWithoutMotions(pathToVideo);

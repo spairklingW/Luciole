@@ -46,6 +46,10 @@ public:
 	// Loop Over Images Mock Scenario
 	void CyclicUpdateLightsFromMockImages();
 
+	void GetFirstStreamImage(Mat& imagestream);
+
+	void UpdateLightsFromStreamImages(Mat& imagestream)
+
 	void getFrame();
 
 	void startRecording(const std::string & pathToVideo);
