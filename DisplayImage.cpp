@@ -58,7 +58,7 @@ void runRealScenario(int numberLightSources)
 	waitKey(0);
 }
 
-void initLightSourcesFromStream()
+int initLightSourcesFromStream()
 {
 	time_t timer_begin,timer_end;
 	raspicam::RaspiCam_Cv Camera;
@@ -93,7 +93,7 @@ void initLightSourcesFromStream()
 	{
 		//here the id and the position in the vector match: TO BE ADAPTED
 		double intensity = 1;
-		lightSources.at(i).Set(intensity);
+		lightSources.at(indexLightSource).Set(intensity);
 		JsonParser::UpdateLightsIntensityOnJsonFile(lightSources);
 		//set the intensity of the light to 1 so that the changes appears on the LED via python script
 		for ( int i=0; i<nCount; i++ ) {
@@ -101,7 +101,7 @@ void initLightSourcesFromStream()
 			Camera.retrieve ( imagestreamlight);
 			if ( i%5==0 )
 			{
-				room.InitializeLightSourcesFromStream(imagestreamlight);
+				room.InitializeLightSourcesFromStream(imagestreamlight, indexLightSource);
 				cout<<"\r captured "<<i<<" images"<<std::flush;
 			}
 		}

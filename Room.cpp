@@ -128,7 +128,7 @@ void Room::DefineStopConditionForInitialization(int i, int indexFrameStream, boo
 	}
 }
 
-void Room::InitializeLightSourcesFromStream(Mat& imagelight)
+void Room::InitializeLightSourcesFromStream(Mat& imagelight, int index)
 {
 	Mat currentFrame = imagelight;
 
@@ -141,10 +141,11 @@ void Room::InitializeLightSourcesFromStream(Mat& imagelight)
 
 	Mat imageThreasholded;
 	Point lightPose;
-	_imageProcessor.GetLightPositionFromHighestPixelsI(*currentImage, imageThreasholded, indexFrameStream, i, lightPose);
+	//TODO : Parameter index is useless
+	_imageProcessor.GetLightPositionFromHighestPixelsI(*currentImage, imageThreasholded, index, index, lightPose);
 
-	_lightSources.at(i).Set(i);
-	_lightSources.at(i).Set(lightPose);
+	_lightSources.at(index).Set(index);
+	_lightSources.at(index).Set(lightPose);
 }
 
 void Room::InitializeLightSourcesFromRealScene()
