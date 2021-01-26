@@ -18,6 +18,10 @@ LightSource::LightSource(std::string filename)
     
 }
 
+LightSource::LightSource(int id): _id(id)
+{  
+}
+
 LightSource::LightSource(std::shared_ptr<RenderingSimulator> hardwareSimulator) : _hardwareSimulator(hardwareSimulator)
 {
 }

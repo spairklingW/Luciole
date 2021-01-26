@@ -17,6 +17,7 @@ public:
     // constructors / destructors
     LightSource();                    
     LightSource(std::string filename); 
+	LightSource(int id); 
 
 	LightSource(std::shared_ptr < RenderingSimulator> hardwareSimulator);
 

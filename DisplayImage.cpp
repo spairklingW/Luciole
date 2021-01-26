@@ -58,6 +58,58 @@ void runRealScenario(int numberLightSources)
 	waitKey(0);
 }
 
+void initLightSourcesFromStream()
+{
+	time_t timer_begin,timer_end;
+	raspicam::RaspiCam_Cv Camera;
+	cv::Mat image;
+	int nCount=10;
+	Camera.set(cv::CAP_PROP_FORMAT, CV_8UC1 );
+	cout<<"Opening Camera..."<<endl;
+	if (!Camera.open()) {cerr<<"Error opening the camera"<<endl;return -1;}
+	cout<<"Capturing "<<nCount<<" frames ...."<<endl;
+	time ( &timer_begin );
+	
+	/*----------------------------------------------------------------------------------*/
+	Mat imageref;
+	Camera.grab();
+	Camera.retrieve(imageref);
+	std::shared_ptr < Mat> imageRefRoom = std::make_shared<Mat>(imageref);
+	std::shared_ptr<RenderingSimulator>  hardwareSimulator = std::make_shared<RenderingSimulator>(imageRefRoom);
+	int numberLightSources = 4;
+	Room room(numberLightSources, hardwareSimulator, *imageRefRoom);
+
+	Mat imagestream;
+	room.GetFirstStreamImage(imagestream);
+
+	std::vector<LightSource> lightSources;
+	for(int i= 0; i< numberLightSources; i ++)
+	{
+		lightSources.emplace_back(LightSource(i));
+	}
+	
+	Mat imagestreamlight;
+	for (int indexLightSource =0; indexLightSource < numberLightSources; indexLightSource ++)
+	{
+		//here the id and the position in the vector match: TO BE ADAPTED
+		double intensity = 1;
+		lightSources.at(i).Set(intensity);
+		JsonParser::UpdateLightsIntensityOnJsonFile(lightSources);
+		//set the intensity of the light to 1 so that the changes appears on the LED via python script
+		for ( int i=0; i<nCount; i++ ) {
+			Camera.grab();
+			Camera.retrieve ( imagestreamlight);
+			if ( i%5==0 )
+			{
+				room.InitializeLightSourcesFromStream(imagestreamlight);
+				cout<<"\r captured "<<i<<" images"<<std::flush;
+			}
+		}
+		intensity =0;
+		JsonParser::UpdateLightsIntensityOnJsonFile(lightSources);
+	}
+	//JsonParser::UpdateLightsIntensityOnJsonFile(_lightSources);
+}
  
 int main ( int argc,char **argv ) {
    

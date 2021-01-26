@@ -128,6 +128,25 @@ void Room::DefineStopConditionForInitialization(int i, int indexFrameStream, boo
 	}
 }
 
+void Room::InitializeLightSourcesFromStream(Mat& imagelight)
+{
+	Mat currentFrame = imagelight;
+
+	Mat curgrayscaleFrame;
+	Mat curgrayscaleFrameChar;
+	cvtColor(currentFrame.clone(), curgrayscaleFrame, COLOR_BGR2GRAY);
+	curgrayscaleFrame.convertTo(curgrayscaleFrameChar, CV_8UC1);
+
+	std::unique_ptr<Mat> currentImage = std::make_unique<Mat>(curgrayscaleFrameChar.clone());
+
+	Mat imageThreasholded;
+	Point lightPose;
+	_imageProcessor.GetLightPositionFromHighestPixelsI(*currentImage, imageThreasholded, indexFrameStream, i, lightPose);
+
+	_lightSources.at(i).Set(i);
+	_lightSources.at(i).Set(lightPose);
+}
+
 void Room::InitializeLightSourcesFromRealScene()
 {
 

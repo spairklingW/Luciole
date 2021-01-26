@@ -36,6 +36,8 @@ public:
 
 	void InitializePositionMovingInstancesMock();
 
+	void InitializeLightSourcesFromStream(Mat& imagelight);
+
 	// Initialization methods for Real Scenario
 	void InitializeFrameWithoutMotion();
 
